@@ -1,0 +1,8 @@
+[tool.poetry]
+name = "personal_assistant"
+version = "0.1.0"
+description = "Personal assistant project"
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
