@@ -1,0 +1,23 @@
+# Використовуємо базовий образ Python
+FROM python:3.8-slim
+
+# Встановлюємо необхідні залежності
+RUN apt-get update && apt-get install -y \
+    python3-dev \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Створюємо робочу директорію /app в образі
+WORKDIR /app
+
+# Копіюємо файли з домашньої роботи в робочу директорію образу
+COPY . /app
+
+# Встановлюємо залежності Python з файла вимог
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Встановлюємо змінну середовища для запуску Python без буферизації
+ENV PYTHONUNBUFFERED 1
+
+# Вказуємо команду для запуску застосунку при створенні контейнера
+CMD ["python", "personal_assistant.py"]
